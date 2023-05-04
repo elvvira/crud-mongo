@@ -40,6 +40,7 @@ controller.changeProduct = async (req, res) => {
   await product.save();
   res.send('Product update');
 };
+
 controller.deleteProduct = async (req, res) => {
   const product = await ProductModel.findById(req.params.id);
   if (!product) {
@@ -48,4 +49,5 @@ controller.deleteProduct = async (req, res) => {
   await ProductModel.deleteOne({ _id: user.id });
   res.send('User deleted');
 };
+
 module.exports = controller;
