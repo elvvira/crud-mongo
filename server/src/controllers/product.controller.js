@@ -39,7 +39,7 @@ controller.changeProduct = async (req, res) => {
   }
   await ProductModel.updateOne({ _id: product.id });
   await product.save();
-  const allProducts = ProductModel.find();
+  const allProducts = await ProductModel.find();
   res.send(allProducts);
 };
 
@@ -49,7 +49,7 @@ controller.deleteProduct = async (req, res) => {
     return res.status(409).send('user not exist');
   }
   await ProductModel.deleteOne({ _id: user.id });
-  const allProducts = ProductModel.find();
+  const allProducts = await ProductModel.find();
   res.send(allProducts);
 };
 

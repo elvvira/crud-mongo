@@ -24,7 +24,15 @@ const AllProducts = ({ data, setFetchInfo }) => {
 									editar
 								</ButtonCard>
 								<ButtonCard
-									onClick={() => setContent(<Delete setContent={setContent} />)}
+									onClick={() =>
+										setContent(
+											<Delete
+												setContent={setContent}
+												setFetchInfo={setFetchInfo}
+												currentId={product._id}
+											/>
+										)
+									}
 								>
 									borrar
 								</ButtonCard>
