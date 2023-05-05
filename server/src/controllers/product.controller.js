@@ -25,10 +25,11 @@ controller.createProduct = async (req, res) => {
     _id: v4(),
     name,
     size,
-    price
+    price: Number(price)
   });
   await newProduct.save();
-  res.send('Product saved');
+  const allProducts = await ProductModel.find();
+  res.send(allProducts);
 };
 
 controller.changeProduct = async (req, res) => {
@@ -38,7 +39,8 @@ controller.changeProduct = async (req, res) => {
   }
   await ProductModel.updateOne({ _id: product.id });
   await product.save();
-  res.send('Product update');
+  const allProducts = ProductModel.find();
+  res.send(allProducts);
 };
 
 controller.deleteProduct = async (req, res) => {
@@ -47,7 +49,8 @@ controller.deleteProduct = async (req, res) => {
     return res.status(409).send('user not exist');
   }
   await ProductModel.deleteOne({ _id: user.id });
-  res.send('User deleted');
+  const allProducts = ProductModel.find();
+  res.send(allProducts);
 };
 
 module.exports = controller;
