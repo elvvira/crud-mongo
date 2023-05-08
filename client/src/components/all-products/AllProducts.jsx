@@ -19,7 +19,15 @@ const AllProducts = ({ data, setFetchInfo }) => {
 							<div>
 								{' '}
 								<ButtonCard
-									onClick={() => setContent(<Edit setContent={setContent} />)}
+									onClick={() =>
+										setContent(
+											<Edit
+												setContent={setContent}
+												setFetchInfo={setFetchInfo}
+												currentId={product._id}
+											/>
+										)
+									}
 								>
 									editar
 								</ButtonCard>
